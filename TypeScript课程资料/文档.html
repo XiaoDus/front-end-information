@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!-- saved from url=(0337)http://127.0.0.1:8848/dcloudmdpaser?filename=D%3A%2F%E5%8C%97%E5%A4%A7%E9%9D%92%E9%B8%9F%E8%AF%BE%E4%BB%B6%2F%E5%89%8D%E7%AB%AF%2F12.TypeScript%2F%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2.md&theme=github-markdown.css&projectname=%E5%8C%97%E5%A4%A7%E9%9D%92%E9%B8%9F%E8%AF%BE%E4%BB%B6&repath=%E5%89%8D%E7%AB%AF%2F12.TypeScript%2F&charset=UTF-8 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="./文档_files/style.css" type="text/css" charset="UTF-8"><link rel="stylesheet" href="./文档_files/github-markdown.css" type="text/css" charset="UTF-8"><link rel="stylesheet" href="./文档_files/prism.css" type="text/css" charset="UTF-8"><script src="./文档_files/prism.js.下载" type="text/javascript" charset="UTF-8"></script></head><body class="markdown-body"><h1 id="1ts是什么">1.TS是什么</h1>
+<p>是JS的超集，JS有的它都有，为JS变量加入了类型声明</p>
+<h1 id="2为什么出现ts">2.为什么出现TS</h1>
+<p>因为JS经常出现类型错误的问题，导致经常花时间找bug，加入类型支持后提高了开发效率，降低了出错率</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">18</span>
+a <span class="token operator">=</span> <span class="token string">'19'</span>
+a<span class="token punctuation">.</span>toFixed</code></pre>
+<p>将报错，类型错误，字符串不能用<code>toFixed</code>方法</p>
+<h1 id="3安装ts的编译工具">3.安装TS的编译工具</h1>
+<p>运行环境只认识JS代码，所以需要将TS文件编译成JS</p>
+<pre><code>npm i typescript -g</code></pre><p>提供了tsc命令，可以将ts文件转为js文件 <code>tsc -v</code>查看版本</p>
+<h1 id="4初体验">4.初体验</h1>
+<ul>
+<li>创建ts文件</li>
+<li>编译ts文件 <code>tsc</code></li>
+<li>执行js文件 <code>node</code></li>
+</ul>
+<h1 id="5简化运行ts的步骤">5.简化运行TS的步骤</h1>
+<p>每次修改代码都要编译ts，执行js，比较麻烦</p>
+<p>可以使用<code>ts-node</code>包直接执行ts</p>
+<pre><code>npm i ts-node -g
+ts-node xxxx.ts //命令会自己编译并执行（但并不会生成js文件）</code></pre><h1 id="6给变量添加类型">6.给变量添加类型</h1>
+<p>变量: 类型    （一旦约定了该变量是什么类型，就只能给它赋值该类型的值）</p>
+<h1 id="7常用类型">7.常用类型</h1>
+<h3 id="1js原始类型">(1).JS原始类型:</h3>
+<pre class=" language-js"><code class=" language-js">number
+string
+boolean
+<span class="token keyword">null</span>
+undefined
+symbol</code></pre>
+<hr>
+<h3 id="2数组类型">(2).数组类型:</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> n<span class="token punctuation">:</span> number<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//数组中只能有数字</span>
+<span class="token keyword">let</span> s<span class="token punctuation">:</span> string<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//数组中只能有字符串</span></code></pre>
+<hr>
+<h3 id="3联合类型：">(3).联合类型：</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> arr<span class="token punctuation">:</span> <span class="token punctuation">(</span>number <span class="token operator">|</span> string<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//数组中可以有字符串和数字</span>
+<span class="token keyword">let</span> arr<span class="token punctuation">:</span> number <span class="token operator">|</span> string<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//这是或，只能是 数字 或 字符串的数组 中的一种</span></code></pre>
+<hr>
+<h3 id="4自定义类型：">(4).自定义类型：</h3>
+<pre class=" language-js"><code class=" language-js">type myType <span class="token operator">=</span> <span class="token punctuation">(</span>number <span class="token operator">|</span> string<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> a<span class="token punctuation">:</span> myType</code></pre>
+<hr>
+<h3 id="5函数类型">(5).函数类型:</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>n1<span class="token punctuation">:</span> number<span class="token punctuation">,</span>n2<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">:</span> number<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> n1 <span class="token operator">+</span> n2
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> sum <span class="token operator">=</span> <span class="token punctuation">(</span>n1<span class="token punctuation">:</span> number<span class="token punctuation">,</span>n2<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">:</span> number <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> n1 <span class="token operator">+</span> n2
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> sum<span class="token punctuation">:</span> <span class="token punctuation">(</span>n1<span class="token punctuation">:</span> number<span class="token punctuation">,</span>n2<span class="token punctuation">:</span> number<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function-variable function">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n1<span class="token punctuation">,</span>n2<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> n1 <span class="token operator">+</span> n2
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="6void无返回值">(6).void无返回值:</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">say</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'i am'</span><span class="token punctuation">,</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="7可选参数">(7).可选参数:</h3>
+<p>参数名后加问号，特别注意可选参数之后不能再出现必选参数，所以通常往后放</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">say</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token operator">?</span><span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'i am'</span><span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="8对象类型">(8).对象类型:</h3>
+<p>(同函数一样也能设置可选属性):</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> person<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> number<span class="token punctuation">,</span>
+    <span class="token function">say</span><span class="token punctuation"><span class="token operator">?</span>(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span>
+    <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> <span class="token number">19</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="9接口">(9).接口:</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">interface</span> <span class="token class-name">personType</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> number<span class="token punctuation">,</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">:</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> person<span class="token punctuation">:</span> personType <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> <span class="token number">19</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="10接口对比自定义类型">(10).接口对比自定义类型:</h3>
+<p>(<code>interface</code>只能给对象设置类型，<code>type</code>可以给任何类型指定):</p>
+<pre class=" language-js"><code class=" language-js">type personType <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span> number<span class="token punctuation">,</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">:</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+
+type nameType <span class="token operator">=</span> string</code></pre>
+<hr>
+<h3 id="11接口继承extends">(11).接口继承extends:</h3>
+<p>(也就是继承的接口拥有了被继承的接口的所有属性)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">interface</span> <span class="token class-name">personType</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">catType</span> <span class="token keyword">extends</span> <span class="token class-name">personType</span> <span class="token punctuation">{</span>color<span class="token punctuation">:</span> string<span class="token punctuation">}</span>
+<span class="token comment">//等同于</span>
+<span class="token keyword">interface</span> <span class="token class-name">catType</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">,</span>color<span class="token punctuation">:</span> string<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="12元组">(12).元组:</h3>
+<p>(与数组一样，但限制了指定的元素个数，不能多也不能少)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> position<span class="token punctuation">:</span> <span class="token punctuation">[</span>number<span class="token punctuation">,</span>number<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span></code></pre>
+<hr>
+<h3 id="13类型推论">(13).类型推论:</h3>
+<ul>
+<li>1.可以省略声明变量类型，初次声明变量并赋值的时候，TS会自动推断值给变量添加类型</li>
+<li>2.但注意仅声明变量，但没有赋值，TS将无法正确判断类型，因此建议只声明变量不赋值的时候，手动设置类型</li>
+<li>3.函数返回值可以省略，但参数建议手动指定类型，以便ts的类型检查生效</li>
+</ul>
+<hr>
+<h3 id="14类型断言">(14).类型断言:</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">""</span> id<span class="token operator">=</span><span class="token string">"link"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token keyword">const</span> alink <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'link'</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>此时alink被推论为<code>HTMLElement</code>,但只能使用公共的标签属性，如<code>id</code> <code>class</code>不能使用特有属性，如<code>href</code>
+因此<code>alink.href</code>将不生效
+使用断言重新指定其类型</p>
+</blockquote>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> alink <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'link'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> HTMLAnchorElement</code></pre>
+<h2 id="通过浏览器调试，选中元素后-执行consoledir0-，展开结果最下方原型对象会显示其类型">通过浏览器调试，选中元素后 执行<code>console.dir($0)</code> ，展开结果最下方原型对象会显示其类型</h2>
+<h3 id="15字面量类型">(15).字面量类型:</h3>
+<p>(常用于规定函数参数的可选值)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">const</span> hello <span class="token operator">=</span> <span class="token string">'hello ts'</span> <span class="token comment">//常量会被推论为字面量类型，hello的类型就是'hello ts'，也就是说，它的值就是它的类型</span>
+
+<span class="token comment">// 参数direction只能写up或down</span>
+<span class="token keyword">function</span> <span class="token function">changeDirection</span><span class="token punctuation">(</span>direction<span class="token punctuation">:</span> <span class="token string">'up'</span> <span class="token operator">|</span> <span class="token string">'down'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>direction<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="16枚举类型">(16).枚举类型:</h3>
+<p>(可用于指定参数的可选值)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">enum</span> Direction <span class="token punctuation">{</span>up<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>down<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>left<span class="token punctuation">,</span>right<span class="token punctuation">}</span> <span class="token comment">// 数字枚举可以自增长，但如果设置字符串枚举，则需要给每个成员都设置值</span>
+<span class="token keyword">function</span> <span class="token function">changeDirection</span><span class="token punctuation">(</span>direction<span class="token punctuation">:</span> Direction<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>direction<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">changeDirection</span><span class="token punctuation">(</span>Direction<span class="token punctuation">.</span>up<span class="token punctuation">)</span> <span class="token comment">// == changeDirection(0)</span></code></pre>
+<hr>
+<h3 id="17typeof运算符">(17).typeof运算符:</h3>
+<p>(可用于简化指定函数中参数的类型)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> p <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span>b<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>num<span class="token punctuation">:</span><span class="token punctuation">{</span>a<span class="token punctuation">:</span> number<span class="token punctuation">,</span>b<span class="token punctuation">:</span> number<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span>a<span class="token operator">+</span>num<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+    <span class="token operator">||</span>
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>num<span class="token punctuation">:</span> <span class="token keyword">typeof</span> p<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//指定num中的类型为p的类型 == (num: {a: number,b: number})</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span>a<span class="token operator">+</span>num<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">{</span>a<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span>b<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> test<span class="token punctuation">:</span> <span class="token keyword">typeof</span> p<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">123</span></code></pre>
+<hr>
+<h3 id="18any类型">(18).any类型:</h3>
+<p>(不推荐使用，取消TS的变量类型保护，可以对变量任意赋值)：</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">let</span> a<span class="token punctuation">:</span> any <span class="token operator">=</span> <span class="token number">1</span>
+a <span class="token operator">=</span> <span class="token string">'123'</span></code></pre>
+<p>使用场景 但依然不推荐,建议用泛型解决该需求:</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">say</span><span class="token punctuation">(</span>word<span class="token punctuation">:</span> any<span class="token punctuation">)</span><span class="token punctuation">:</span> any<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> word
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h1 id="8ts高级类型">8.TS高级类型</h1>
+<h3 id="1class类">(1).class类</h3>
+<p><code>class</code>在TS中会作为一种类型存在</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string
+    age<span class="token punctuation">:</span> number
+    sex <span class="token operator">=</span> <span class="token string">'男'</span> <span class="token comment">//上面所说，如果有默认值，可以省略类型声明，ts会自动推论</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//注意构造函数不能声明返回值类型</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+    <span class="token function">say</span><span class="token punctuation">(</span>word<span class="token punctuation">:</span> string<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'我是'</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">'我正在说：'</span>word<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'张三'</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+p<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token string">'你们好'</span><span class="token punctuation">)</span></code></pre>
+<h4 id="2类继承extends">(2).类继承extends</h4>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string
+    age<span class="token punctuation">:</span> number
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//注意构造函数不能声明返回值类型</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+    <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'走动中'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'喵喵'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token string">'小白'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h4 id="3类接口implements">(3).类接口implements</h4>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">interface</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string
+    age<span class="token punctuation">:</span> number
+    <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">implements</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string
+    age<span class="token punctuation">:</span> number
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//注意构造函数不能声明返回值类型</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+    <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'走两步'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'喵喵'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token string">'小白'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h4 id="4类修饰符">(4).类修饰符</h4>
+<p>公开的：<code>public(默认)</code> 受保护的：<code>protected</code> 私有的：<code>private</code> 只读的：<code>readonly</code></p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">class</span> <span class="token class-name">Cat</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> string
+    readonly age<span class="token punctuation">:</span> number <span class="token comment">//只读，只能在构造函数里赋值，其他地方无法修改或赋值,且必须指定类型，否则会被推论为是字面量类型</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// 可在任何地方调用，内部 this.move(),外界 c.move()</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'走两步'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">protected</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// 只能在当前类和子类调用 this.say() 但外界无法执行 c.say()</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'喵喵'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// 只在当前类可调用 this.eat()，子类和外界均不可用 </span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'吃东西'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token string">'小白'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span></code></pre>
+<hr>
+<h3 id="5交叉类型">(5).交叉类型</h3>
+<p>(组合两个类型)</p>
+<pre class=" language-js"><code class=" language-js">type p1 <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> string<span class="token punctuation">}</span>
+type p2 <span class="token operator">=</span> <span class="token punctuation">{</span>age<span class="token punctuation">:</span> number<span class="token punctuation">}</span>
+type person <span class="token operator">=</span> p1 <span class="token operator">&amp;</span> p2
+<span class="token keyword">let</span> p<span class="token punctuation">:</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
+    age<span class="token punctuation">:</span><span class="token number">18</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="6泛型">(6).泛型</h3>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> say<span class="token operator">&lt;</span>Type<span class="token operator">&gt;</span><span class="token punctuation">(</span>word<span class="token punctuation">:</span> Type<span class="token punctuation">)</span><span class="token punctuation">:</span> Type <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> word
+<span class="token punctuation">}</span></code></pre>
+<p><code>&lt;可自定标识&gt;</code>表示由调用者声明类型</p>
+<pre class=" language-js"><code class=" language-js">调用<span class="token punctuation">:</span><span class="token keyword">let</span> value <span class="token operator">=</span> say<span class="token operator">&lt;</span>number<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> 
+调用<span class="token punctuation">:</span><span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token string">'你好'</span><span class="token punctuation">)</span> 
+<span class="token comment">//可省略类型声明，因为会被自动声明为字面量类型，也就是 Type为 '你好'类型，一般情况下不影响功能，如果影响则可以手动声明</span></code></pre>
+<h4 id="7泛型约束">(7).泛型约束</h4>
+<p>有时候调用者传递来的类型可能无法调用某些方法,因此可修改调用者传递来的类型</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> say<span class="token operator">&lt;</span>Type<span class="token operator">&gt;</span><span class="token punctuation">(</span>word<span class="token punctuation">:</span> Type<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Type<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> word<span class="token punctuation">.</span>length
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> value <span class="token operator">=</span> say<span class="token operator">&lt;</span>number<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">//默认number不存在length方法，但约束为为数组类型后就可以</span></code></pre>
+<hr>
+<h1 id="9声明文件-xxxdts">9.声明文件 xxx.d.ts</h1>
+<p><code>.ts</code>和<code>.d.ts</code>两者区别</p>
+<p><code>ts</code>文件用于编写程序、编译为js并执行</p>
+<p><code>d.ts</code>文件用于为编译后的js文件提供类型说明，让编辑器可以像打开ts文件一样查看其中的类型及其他机制功能</p>
+<h2 id="示例：">示例：</h2>
+<p>a.ts</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>person<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./type'</span> 
+<span class="token keyword">let</span> p1<span class="token punctuation">:</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span><span class="token string">'张三'</span><span class="token punctuation">,</span>age<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">}</span></code></pre>
+<p>b.ts</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>person<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./type'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>calc<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./calc'</span> <span class="token comment">// ts引入模块会自动引入同名.d.ts文件</span>
+<span class="token keyword">let</span> p1<span class="token punctuation">:</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span><span class="token string">'李四'</span><span class="token punctuation">,</span>age<span class="token punctuation">:</span><span class="token number">47</span><span class="token punctuation">}</span>
+calc<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span></code></pre>
+<p>calc.js</p>
+<pre class=" language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>n1<span class="token punctuation">,</span>n2<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>n1<span class="token operator">+</span>n2<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>sum<span class="token punctuation">}</span></code></pre>
+<p>type.d.ts</p>
+<pre class=" language-js"><code class=" language-js">type person <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>age<span class="token punctuation">:</span> number<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>person<span class="token punctuation">}</span></code></pre>
+<p>calc.d.ts</p>
+<pre class=" language-js"><code class=" language-js">declare <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>n1<span class="token punctuation">:</span> number<span class="token punctuation">,</span>n2<span class="token punctuation">:</span> number<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>sum<span class="token punctuation">}</span></code></pre>
+<script>document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35929/livereload.js?snipver=1"></' + 'script>')</script><script src="./文档_files/livereload.js.下载"></script></body></html>

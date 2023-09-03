@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var sum = function(n1,n2){
+				return n1+n2
+			}
+			
+			var jian = function(n1,n2){
+				return n1-n2
+			}
+			
+			var a = new sum() //sum是a的老爸
+			var b = new jian() //jian是b的老妈
+			var c = new jian() //jian是c的老妈
+			console.log('儿子',a)
+			console.log('儿子的隐式基因',a.__proto__) //隐式原型对象
+			console.log('老爸的显式基因',sum.prototype) //显式原型对象
+			console.log('爷爷的隐式基因',a.__proto__.__proto__)
+			console.log('爷爷的显式基因',Object.prototype)
+			Object.prototype.age = 18
+			sum.prototype.name = '张三'
+			jian.prototype.name = '李四'
+			console.log('---------------------')
+			console.log(a.name,a.age)
+			console.log('@@@@@@@@@@@@@@@')
+			console.log(b.name,b.age)
+			console.log(c.name,c.age)
+			
+			console.log('---------------------')
+			
+			console.log(a.__proto__.__proto__) // new Object()
+		</script>
+	</body>
+</html>

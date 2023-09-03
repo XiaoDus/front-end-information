@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 查找不存在别名的按键 -->
+		  <input type="text" @keyup="getKeyCode" v-model="val_2" placeholder="按下按键输出KeyCode"/><br>
+		  <input type="text" @keyup.key_k="showInfo" v-model="val_1" /><br>
+		  
+		  <input type="text" @change="btnEvent('改变')" v-model="val_3" /><br>
+		  <button @dblclick="btnEvent('双击')" type="button">事件绑定</button>
+		</div>
+		<script>
+		Vue.config.productionTip = false
+		Vue.config.keyCodes.key_k = 75
+		var vm = new Vue({
+		  el: '#app',
+		  data(){
+			  return {
+				  val_1:'',
+				  val_2:'',
+				  val_3:''
+			  }
+		  },
+		  methods:{
+			  showInfo(e){
+			  	console.log(this.val_1)
+			  },
+			  getKeyCode(e){
+				  console.log(e.target.value)
+				  console.log(e.key)
+				  console.log(e.keyCode)
+			  },
+			  btnEvent(msg){
+				console.log(event)
+			  	console.log('你好，我是'+msg)
+			  }
+		  }
+		})
+		
+		
+		</script>
+	</body>
+</html>

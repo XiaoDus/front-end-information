@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			账户<input type="text" v-model="username"/><br>
+			密码<input type="password" v-model="password" /><br>
+			<button type="button" :disabled="isDisabled">登录</button>
+			<hr>
+				进度：{{progress}}%
+				<button type="button" @click="up">开始</button>
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					username:'',
+					password:'',
+					isDisabled : true,
+					progress:0,
+					time:null
+				},
+				methods: {
+					up(){
+						var _this = this;
+						this.time = setInterval(function(){
+							// console.log(this)
+							_this.progress = _this.progress + 5
+						},1000)
+					}
+				},
+				watch: {
+					progress(new_value,old_value) {
+						if(new_value == 50){
+							alert('正在加载中，请耐心等待')
+						}
+						if(new_value == 100){
+							clearInterval(this.time);
+							alert('加载完成')
+						}
+					},
+					username(){
+						if(this.username != '' && this.password != ''){
+							this.isDisabled = false
+						}
+					},
+					password(){
+						if(this.username != '' && this.password != ''){
+							this.isDisabled = false
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

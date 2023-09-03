@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  {{ message }}
+		</div>
+		
+		<script>
+		let vm = new Vue({
+		  el: '#app',
+		  data() {
+		    return {
+		      message: '信息',
+		    }
+		  },
+		  // beforeCreate() {
+		  //   console.log('----beforeCreate----')
+		  //   console.log(this.message) //msg
+		  //   console.log(this.$el) //undefined
+		  // },
+		  // created() {
+		  //   console.log('----created----')
+		  //   console.log(this.message)
+		  //   console.log(this.$el)
+		  // },
+		  // beforeMount() {
+		  //   console.log('----beforeMount----')
+		  //   console.log(this.message)
+		  //   console.log(this.$el)
+		  // },
+		  // mounted() {
+		  //   console.log('----mounted----')
+		  //   console.log(this.message)
+		  //   console.log(this.$el)
+		  // },
+		  beforeUpdate(){
+			  console.log('----beforeUpdate----')
+		  },
+		  updated(){
+			  console.log('----updated----')
+		  }
+		})
+		</script>
+	</body>
+</html>

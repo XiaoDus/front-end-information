@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <table border="1" cellspacing="" cellpadding="">
+		  	<tr>
+				<th>ID</th>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>操作</th>
+			</tr>
+		  	<tr v-for="g in goods" :key="g.id">
+				<td>{{g.id}}</td>
+				<td>{{g.name}}</td>
+				<td>{{g.price}}</td>
+				<td><button @click="addCart(g.id)" type="button">加入购物车</button></td>
+			</tr>
+		  </table>
+		  <hr>
+		  <table border="1" cellspacing="" cellpadding="">
+		  	<tr>
+				<th>商品名称</th>
+				<th>数量</th>
+				<th>总价</th>
+				<th>操作</th>
+			</tr>
+		  	<tr v-for="(c,index) in cart" :key="c.id">
+				<td>{{c.name}}</td>
+				<td>{{c.num}}</td>
+				<td>{{c.price}}</td>
+				<td><button @click="removeCart(index)" type="button">移除购物车</button></td>
+			</tr>
+		  </table>
+		  总价：￥{{allPrice}}
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    goods : [
+		    	{id:'001',name:'苹果',price:2},
+		    	{id:'002',name:'荔枝',price:15},
+		    	{id:'003',name:'西瓜',price:8}
+		    ],
+			cart : [
+				// {name:'',num:0}
+			],
+		  },
+		  methods:{
+			  addCart(g_id){
+				  // 获取添加的商品
+				  let good = this.goods.find((val)=>{
+				  		return val.id === g_id
+				  	})
+					
+				  // 去购物车查找判断商品是否添加过
+				  let isCart = this.cart.find((val)=>{
+				  		return val.name === good.name
+				  	})
+				  if(isCart){
+					  //添加过则直接增加商品数量及价格
+					  this.cart.find((val)=>{
+						if(val.name === isCart.name){
+							val.num++
+							val.price = val.num*good.price
+						}
+				  	})
+				  }else{
+					  //未添加则添加
+					  let cartObj = {
+						  name:good.name,
+						  num:1,
+						  price:good.price,
+					  }
+					  this.cart.push(cartObj)
+				  }	
+			  },
+			  removeCart(idx){
+				  // console.log(idx)
+				  this.cart.splice(idx,1)
+			  }
+		  },
+		  computed:{
+			  // 遍历cart叠加所有商品的价格
+			  allPrice(){
+				  let ap = 0
+				  for(let key in this.cart){
+					  console.log(this.cart[key])
+					  ap = ap + this.cart[key].price
+				  }
+				  return ap
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="sendRequest()" type="button">发送请求</button>
+		<script>
+		function sendRequest(){
+			//1
+			var xhr = new XMLHttpRequest();
+			//2
+			xhr.open('GET','http://1.117.149.125:8080/api/getAjaxData',true)
+			//3
+			xhr.onreadystatechange = function(){
+				if(xhr.status == 200 && xhr.readyState == 4){
+					let data = eval('('+xhr.responseText+')')
+					console.log(data)
+				}
+			}
+			//4
+			xhr.send()
+		}
+		</script>
+	</body>
+</html>

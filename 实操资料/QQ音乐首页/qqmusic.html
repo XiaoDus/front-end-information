@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>QQ音乐-千万正版音乐海量无损曲库</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.esm.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.esm.bundle.js"></script>
+		<style type="text/css">
+			body{
+				background-color: rgb(240,240,240);
+				min-width: 1277.60px;
+				/* background-image: url('https://y.qq.com/ryqq/static/media/bg_detail.bb32b2d1.jpg?max_age=2592000'); */
+				padding:0px;
+				margin:0px;
+			}
+			.top{
+				height: 142px;
+				width: 100%;
+				background-color: #FFFFFF;
+				
+			}
+			.header{
+				height:90px;
+				border-bottom: 1px solid #f2f2f2;
+				margin-left:40px;
+				margin-right:40px;
+			}
+			.header_min{
+				height: 52px;
+			}
+			.header_logo{
+				display: inline-block;
+				float: left;
+				margin-top:20px;
+			}
+			.nav_header_container{
+				float: left;
+			}
+			.nav_header{
+				list-style: none;
+				display: inline-block;
+				margin:0px;
+			}
+			.nav_header li{
+				font-size: 18px;
+				font-family: '微软雅黑';
+				text-align: center;
+				height: 90px;
+				width: 94px;
+				float: left;
+				line-height: 90px;
+			}
+			.nav_header .active{
+				color:#FFFFFF;
+				background-color: #31c27c;
+			}
+			.search_input{
+				float: left;
+				width: 225px;
+				height: 38px;
+				border:1px solid #c9c9c9;
+				border-radius: 3px;
+				background-color: transparent;
+				margin-top: 25px;
+			}
+			.search_input form input{
+				border: none;
+				width: 95%;
+				line-height: 36px;
+				margin-left: 10px;
+				overflow: auto;
+			}
+			.search_input form input:focus{
+				border: none;
+				outline: none;
+			}
+			.search_input form{
+				display: inline-block;
+				float: left;
+			}
+			.btn_search{
+				display: inline-block;
+				margin-top: 2px;
+				width:33px;
+				height:33px;
+				float: right;
+				margin-right:5px;
+				padding:0px;
+				border: none;
+			}
+			.btn_search:hover{
+				cursor: pointer;
+			}
+			.btn_search_ico{
+				width: 100%;
+				height: 100%;
+			}
+			.btn_header{
+				margin-left: 15px;
+				margin-top: 25px;
+				height: 40px;
+				float: left;
+			}
+			.btn_header button{
+				position: relative;
+				height:100%;
+				width: 100%;
+			}
+			.open_vip button::after{
+				position: absolute;
+				content: "";
+				right: 8px;
+				top: 16px;
+				width: 0;
+				height: 0;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				border-top: 6px solid;
+			}
+			.btn_login button{
+				border: none;
+				background-color: #FFF;
+			}
+			.btn_login button:hover{
+				cursor: pointer;
+			}
+			.open_vip{
+				width: 122px;
+			}
+			.open_vip button{
+				border: none;
+				background-color: #31c27c;
+				color: #FFFFFF;
+				border-radius: 3px;
+			}
+			.open_vip button:hover{
+				cursor: pointer;
+			}
+			.cz{
+				width: 83px;
+			}
+			.cz button{
+				border: 1px solid black;
+				border-radius: 3px;
+				background-color: #FFFFFF;
+			}
+			.cz button:hover{
+				cursor: pointer;
+			}
+			.cz button::after{
+				position: absolute;
+				content: "";
+				right: 8px;
+				top: 16px;
+				width: 0;
+				height: 0;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				border-top: 6px solid;
+			}
+			.nav_header_min{
+				text-align: center;
+				list-style: none;
+				display: inline-flex;
+				margin:0px;
+				justify-content: center;
+			}
+			.clear{
+				clear: both;
+			}
+			.nav_header_min li{
+				font-size: 15px;
+				font-family: '微软雅黑';
+				text-align: center;
+				height: 52px;
+				float: left;
+				line-height: 52px;
+				margin: 0px 30px 0px 30px;
+			}
+			.header_min_container{
+				width: 100%;
+				text-align: center;
+				margin: 0 auto;
+			}
+			.h_title{
+				width: 100%;
+				text-align: center;
+				font-weight: 530;
+				font-size: 32px;
+			}
+			.swiper-container {
+			  width: 90%;
+			  height: 300px;
+			}
+			.swiper-slide {
+			  text-align: center;
+			  font-size: 18px;
+			  /* background: #fff; */
+			
+			  /* Center slide text vertically */
+			  display: -webkit-box;
+			  display: -ms-flexbox;
+			  display: -webkit-flex;
+			  display: flex;
+			  -webkit-box-pack: center;
+			  -ms-flex-pack: center;
+			  -webkit-justify-content: center;
+			  justify-content: center;
+			  -webkit-box-align: center;
+			  -ms-flex-align: center;
+			  -webkit-align-items: center;
+			  align-items: center;
+			  }
+			  .swiper-slide img{
+				  display: block;
+			  }
+			  .swiper-slide img::after{
+			  	  clear: both;
+			  }
+			  .music_title{
+				  width: 100%;
+				  text-align: left;
+				  font-size: 14px;
+				  position: absolute;
+				  bottom: 20px;
+				  color:#000000;
+				  padding-left: 20px;
+			  }
+			  .music_playnum{
+				  width: 100%;
+				  text-align: left;
+				  font-size: 16px;
+				  position: absolute;
+				  bottom: 0px;
+				  color: #999999;
+				  padding-left: 20px;
+			  }
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<div class="header">
+				<div class="header_logo">
+					<img src="https://y.qq.com/mediastyle/yqq/img/logo.png?max_age=2592000" >
+				</div>
+				<div class="nav_header_container">
+					<ul class="nav_header">
+						<li class="active">音乐馆</li>
+						<li>我的音乐</li>
+						<li>客户端</li>
+						<li>开放平台</li>
+						<li>VIP</li>
+					</ul>
+				</div>
+				
+				<div class="search_input">
+					<form action="" method="">
+						<input placeholder="搜索音乐、MV、歌单、用户" type="text" name="" id="" value="" />
+					</form>
+					<button class="btn_search" type="button">
+						<img class="btn_search_ico" src="./img/btn_search.png">
+					</button>
+				</div>
+				
+				<div class="btn_login btn_header">
+					<button type="button">登录</button>
+				</div>
+				<div class="open_vip btn_header">
+					<button type="button">开通VIP</button>
+				</div>
+				<div class="cz btn_header">
+					<button type="button">充值</button>
+				</div>
+		</div>
+		<div class="clear"></div>
+		<div class="header_min">
+			<div class="header_min_container">
+				<ul class="nav_header_min">
+					<li>首页</li>
+					<li>歌手</li>
+					<li>新碟</li>
+					<li>排行榜</li>
+					<li>分类歌单</li>
+					<li>电台</li>
+					<li>MV</li>
+					<li>数字专辑</li>
+				</ul>
+			</div>
+		</div>
+		<div class="music_list">
+			<h2 class="h_title">歌&nbsp;&nbsp;单&nbsp;&nbsp;推&nbsp;&nbsp;荐</h2>
+			<div class="header_min_container">
+				<ul class="nav_header_min">
+					<li>为你推荐</li>
+					<li>网络歌曲</li>
+					<li>官方歌单</li>
+					<li>经典</li>
+					<li>情歌</li>
+					<li>KTV热歌</li>
+				</ul>
+			</div>
+			<!-- Swiper -->
+			<div class="swiper-container">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/OwM8HumCFSZkaBpnhEqFcNzhlWfqlNpa1LRAx7qcM28a4KicVrmzcQQ/600?n=1" ><br>
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/CXricxSibts8cC0Pl3TdOV0KoayGE9LBicy22eibBKhmdlRf8Ecvibqq9KA/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/hnETBDZGVakiapcylpyxhC3sGyULrLnZ9tKKssHOmgIbALeQIJqNBibg/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://y.qq.com/music/photo/album_500/30/500_albumpic_411330_0.jpg?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/FBicu030Yo6HCiavRCRg0vJHApL6c9ibhicTMfb5haHIAEAEYqd7gcFxibg/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/mjwso42uiaUByn06XcwP12ialhaEe7WNPiaps2Kl6Hv1qdPMubSKbhgEg/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/wiaP13cL37PEKEKZp17ATP7bh8YYwUZgBLuoTHYf5ZhdozMSG7ZT6jg/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/dvibiafMUQMVwxHMibdQ5wFX9jkc8KVWWQH6aodVRbVmQngtkb26oUu6A/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/KBCvCo8WK3vqbRQSI6l6oPpDNQCwgEnF6cm904JEcPUic6Db0k2e3Ow/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			    <div class="swiper-slide"><img width="224" height="224" src="https://p.qpic.cn/music_cover/9rW0ywcIoze2aKgBtXGiadia6OytG0AbvnsnFBy0t5eY6j46BpTibUickA/600?n=1" >
+					<div class="music_title">
+						放学路上必听|温柔如风的说唱
+					</div>
+					<div class="music_playnum">
+						播放量：642.0万
+					</div>
+				</div>
+			  </div>
+			  <!-- Add Pagination -->
+			  <!-- <div class="swiper-pagination"></div> -->
+			  <!-- Add Arrows -->
+			  <div class="swiper-button-next"></div>
+			  <div class="swiper-button-prev"></div>
+			</div>
+			
+		</div>
+		<div class="music_new"></div>
+		
+		<!-- Initialize Swiper -->
+		<script>
+		  var swiper = new Swiper('.swiper-container', {
+		    slidesPerView: 5,
+		    spaceBetween: 30,
+		    slidesPerGroup: 5,
+		    loop: true,
+		    loopFillGroupWithBlank: true,
+		    pagination: {
+		      el: '.swiper-pagination',
+		      clickable: true,
+		    },
+		    navigation: {
+		      nextEl: '.swiper-button-next',
+		      prevEl: '.swiper-button-prev',
+		    },
+		  });
+		</script>
+	</body>
+</html>

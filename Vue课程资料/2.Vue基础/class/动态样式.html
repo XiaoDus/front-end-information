@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+		<style type="text/css">
+			.base{
+				height: 50px;
+				width: 50px;
+			}
+			.d1{
+				border:1px solid red;
+			}
+			.d2{
+				color:blue;
+			}
+			.d3{
+				background-color: yellow;
+			}
+			.d4{
+				font-size: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		  <div class="base" :class="cls">00000000000</div>
+		  <!-- cls: 'd1', -->
+		  <div :class="isActive?cls:''">111111111111</div>
+		  
+		  <div :class="clsArr">22222222222</div>
+		  <!-- clsArr: ['base','d1','d2'], -->
+		  <div :class="{d3:true}">33333333333</div>
+		  
+		  <div :class="[{d3:true},'d1']">44444444444</div>
+		  
+		  <div :style="{color:'orange'}">style</div>
+		  
+		  <div :style="{fontSize:'25px'}">style</div>
+		  
+		  <div :style="{backgroundColor:'blue'}">style</div>
+		  
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    cls: 'd1',
+		    clsArr: ['base','d1','d2'],
+			isActive:true
+		  }
+		})
+		</script>
+	</body>
+</html>

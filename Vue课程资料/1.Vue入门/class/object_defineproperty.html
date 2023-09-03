@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+		// data中的数据
+		let name = '赵六'
+
+		// vm下_data
+		var _data = {
+			name:'赵六',
+		}
+		
+		// vue实例对象
+		// vm = {name:'赵六'}
+		let vm = {}
+		
+		// Vue帮我们做的事情 proxy
+		Object.defineProperty(vm,'name',{
+			get(){
+				console.log('get被调用，获取_data的name值')
+				return _data.name
+			},
+			set(v){
+				console.log('set被调用，修改_data的name值')
+				_data.name = v
+			}
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <input type="checkbox" @change="change" />
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Hello Vue!'
+		  },
+		  methods:{
+			  change(){
+				  alert('被改变')
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

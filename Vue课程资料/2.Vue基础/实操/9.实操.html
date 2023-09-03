@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>{{dataMsg | formatStr}}</div>
+			<input type="text" v-model="val" />{{val | filterStr}}
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					msg: "Vue实例创建成功",
+					dataMsg: "这是一个很长的描述",
+					val:''
+				},
+				filters: {
+					formatStr(value){
+						return value ? value.substring(0,5) + "...[点击查看全部内容]" : "";
+					},
+					filterStr(value){
+						if(!value){
+							return ""
+						}else{
+							let filterArr = ['苹果','香蕉','梨子']
+							filterArr.forEach(function(item){
+								if(value.indexOf(item) != -1){
+									value = '包含违规词汇'
+								}
+							})
+							return value
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

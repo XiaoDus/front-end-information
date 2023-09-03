@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<form>
+				<input type="text" v-model.lazy="input_text_val"> 
+				<input type="text" v-model.trim="input_text_val">
+				<input type="text" v-model.number="input_text_val">
+				当前值：{{ input_text_val }}
+				<hr>
+				篮球<input type="checkbox" v-model="cb" value="篮球"/>
+				足球<input type="checkbox" v-model="cb" value="足球"/>
+				乒乓球<input type="checkbox" v-model="cb" value="乒乓球"/>
+				<hr>
+				男<input type="radio" v-model="rd" value="男"/>
+				女<input type="radio" v-model="rd" value="女"/>
+				<hr>
+				<select v-model="sl">
+					<option value="北京">北京</option>
+					<option value="贵州">贵州</option>
+					<option value="上海">上海</option>
+				</select>
+				<hr>
+				<textarea v-model="ta"></textarea>
+			</form>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    input_text_val:null,
+			cb:["篮球","足球"],
+			rd:'女',
+			sl:'贵州',
+			ta:'123'
+		  }
+		})
+		</script>
+	</body>
+</html>

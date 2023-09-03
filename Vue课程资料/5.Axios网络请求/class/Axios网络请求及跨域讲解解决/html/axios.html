@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学习Axios</title>
+		<script src="./js/axios.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// http://1.117.149.125:8080/api/getAjaxData
+			
+			// GET方法的简写，不带参数，推荐简写
+			// axios.get('http://1.117.149.125:8080/api/getAjaxData').then(res => {
+			// 	console.log('请求成功',res.data)
+			// }).catch(error => {
+			// 	console.log('请求失败',error)
+			// 	if(error.response.status == 404){
+			// 		alert(`请求的资源未找到，错误码：[${error.response.status}]`)
+			// 	}
+			// })
+			
+			
+			
+			//GET方法的完整写法，带参数推荐完整写法
+			axios({
+				url:'http://1.117.149.125:8080/api/getAjaxData', //请求接口
+				method:'GET',//请求方法
+				params:{ //请求参数
+					id:'123'
+				}
+			}).then(res => {
+				console.log('GET请求成功',res.data)
+			}).catch(error => {
+				console.log('GET请求失败',error)
+			})
+			
+			//POST完整写法
+			axios({
+				url:'http://1.117.149.125:8080/api/getAjaxData',
+				method:'POST',
+				data:{
+					username:'admin',
+					password:'123456'
+				}
+			}).then(res => {
+				console.log('POST请求成功',res.data)
+			}).catch(error => {
+				console.log('POST请求失败',error)
+			})
+			
+			//POST方法的简写
+			// axios.post('http://1.117.149.125:8080/api/getAjaxData',postData).then(res => {
+			// 	console.log('请求成功',res.data)
+			// }).catch(e => {
+			// 	console.log('请求失败',error)
+			// })
+			
+			
+		</script>
+	</body>
+</html>

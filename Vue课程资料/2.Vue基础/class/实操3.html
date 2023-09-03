@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{ isLogin?username:'' }}</h1>
+			<input type="text" v-model="username" /><hr>
+			<input type="password" v-model="password" /><hr>
+			<input type="checkbox" v-model="isCheck" />同意<<使用协议>><hr>
+		  <button @click="login" type="button">登录</button>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+			  username:'',
+			  password:'',
+			  isLogin:false,
+			  isCheck:false
+		  },
+		  methods:{
+			  login(){
+				  if(this.username == '' || this.password == ''){
+					  alert('请输入密码或用户名')
+					  return false
+				  }
+				  if(this.isCheck == false){
+					  alert('请先勾选使用协议')
+					  return false
+				  }
+				  this.output()
+				  this.isLogin = true
+			  },
+			  output(){
+				  console.log(this.username,this.password)
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

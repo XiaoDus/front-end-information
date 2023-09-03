@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Promise</h1>
+
+<p id="demo"></p>
+
+<script>
+function show(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+let myPromise = new Promise(function(Resolve, Reject) {
+  let x = 0; //试试将x的值改为5
+
+  if (x == 0) {
+    Resolve("成功");
+  } else {
+    Reject("失败");
+  }
+});
+
+//必须等待执行结果
+myPromise.then(
+  function(value) {show(value);},
+  function(error) {show(error);}
+);
+</script>
+
+</body>
+</html>

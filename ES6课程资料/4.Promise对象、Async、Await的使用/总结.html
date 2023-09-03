@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Promise对象</title>
+	</head>
+	<body>
+		<button type="button" onclick="open_promise()">测试Promise</button>
+		<script>	 
+		// 5.await后面跟如下异步函数将不生效
+		async function test5(){
+			setTimeout(() => {
+				return 10
+			}, 2000);
+		}
+		
+		//2. 会等到调用test4时才执行
+		//5. await后面跟的promise函数的正确写法
+		function test4() {
+			return new Promise(function(resolve,reject){
+				setTimeout(() => {
+					resolve(10)
+					// reject(10) 
+				}, 2000);
+			})
+		}
+		
+		
+		
+		// 4.如果异步函数中使用了其他promise函数，其会并行执行，导致无法获取到promise函数的结果，需要使用await等待结果，且await后面的函数不能是异步函数（虽然返回的也是promise,如错误示例test5），而是有resolve或reject的promise函数，如test4
+		async function test3() {
+			try{
+				var result = await test4();		//正确示例
+				// var result = await test5(); // 错误示例
+				console.log('test3',result)
+				
+			//用于捕获reject
+			}catch(err){
+				console.log('catch.err',err) 
+			}   
+		}
+		
+		// 3.async修饰函数会异步执行函数，且返回promise对象，且resolve的值是return出去的，reject的值是throw出去的
+		async function test2(){
+			// throw 'error';
+			return 'ok';
+		}
+		
+		// 1.会立即执行，导致找不到错误处理而报错
+		var test = new Promise(function(resolve,reject){
+			console.log('test','我开始执行了')
+			//逻辑代码
+			 // resolve('成功')
+			 reject('错误')
+		})
+		
+		function open_promise(){
+			test.then((result)=>{
+				console.log('test',result)
+			},function(err){
+				console.log('test',err)
+			})
+			
+			test4().then((result)=>{
+				console.log('test4',result)
+			},function(err){
+				console.log('test4',err)
+			})
+			
+			test2().then((result)=>{
+				console.log('test2',result)
+			},function(err){
+				console.log('test2',err)
+			})
+			
+			test3()
+		}
+		
+		
+//执行顺序
+//1.test直接被执行，找不到错误处理办法导致报错
+//2.点击按钮触发open_promise()函数
+//3.（并行）执行test，这次能找到错误处理方法了，所以不报错 输出reject 错误
+//4.（并行）执行test4，延迟两秒，输出 resolve 10
+//5.（并行）执行test2，直接输出 resolve ok
+//6.（并行）执行test3，等待test4执行，再次延迟两秒获得test4的返回值，输出 10
+		
+		
+		
+		 // 公式： 
+		 // var 变量名 = new Promise(function(resolve,reject){
+			//  // 执行逻辑，成功则执行
+			//  resolve(数据)
+			//  //失败则执行
+			//  reject(信息)
+		 // })
+		 
+		 // 变量名.then(function(数据){
+			//  // 成功后执行的代码
+			 
+		 // },function(信息){
+			//  // 失败后执行的代码
+			 
+		 // })
+		 
+		</script>
+	</body>
+</html>

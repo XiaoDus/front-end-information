@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/axios.0.27.2.js"></script>
+	</head>
+	<body>
+		<script>
+		// get简写
+		axios.get('https://picsum.photos/v2/list').then( res => {
+		    console.info(res)
+		  }).catch( e => {
+		    console.info(e.config)
+		  })
+		// get完整写法
+		axios({
+		  url: 'https://picsum.photos/v2/list',
+		  method: 'GET',
+		  params: {
+		  ID: 123
+		  }
+		}).then( res => {
+		  console.info(res)
+		}).catch( e=> {
+		  console.info(e)
+		})
+		
+		// post 简写
+		axios.post('https://picsum.photos/v2/list', {
+		  firstName: 'Mike',
+		  lastName: 'Allen'
+		}).then( res => {
+		  console.info(res)
+		}).catch( e => {
+		  console.info(e)
+		})
+		// post完整写法
+		axios({
+		  url: 'https://picsum.photos/v2/list',
+		  method: 'POST',
+		  data: {
+		    firstName: 'Mike',
+		    lastName: 'Allen'
+		  }
+		}).then( res => {
+		  console.info(res)
+		}).catch( e => {
+		  console.info(e)
+		})
+		</script>
+	</body>
+</html>

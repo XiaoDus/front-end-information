@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <img :src="img_src" :width="isShow?size:0" height="isShow?size:0"><br>
+		  <input type="text" name="img" id="" v-model="img_src" /><br>
+		  <input type="checkbox" v-model="isShow"/>显示<br>
+		  <input type="radio" value="150" v-model="size"/>大图<br>
+		  <input type="radio" value="50" v-model="size"/>小图<br>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    img_src: '123',
+			isShow:true,
+			size:150
+		  }
+		})
+		</script>
+	</body>
+</html>

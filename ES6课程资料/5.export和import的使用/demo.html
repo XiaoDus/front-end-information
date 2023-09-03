@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ES6模块化编程</title>
+		<script type="module" src="./app.js"></script>
+	</head>
+	<body>
+		声明模块化：
+		<script type="module" src="./app.js"></script>
+		暴露方法：
+		1.export let a = 1
+		
+		2.let b = 2
+		export {b}
+		
+		3.export default c
+		
+		引入方法:
+		1.import * as 别名 from xxx.js         		别名.xxx
+		2.import {a as 别名,b,c} from xxx.js        b()或console.log(c)
+		3.import person as 别名 from xxx.js         别名.xxx()
+	</body>
+</html>

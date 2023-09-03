@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  {{city}}<hr>
+		  <input type="text" v-model="city" />
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    city: '贵阳'
+		  },
+		  watch:{
+			  city(new_val,old_val){
+				  console.log('city被改变了')
+				  console.log('city新值：'+new_val)
+				  console.log('city旧值：'+old_val)
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" onclick="btnc()">执行事件</button>
+		<script>
+		//async await
+
+		function test(){
+			return new Promise(function(resolve,reject){
+				setTimeout(function(){
+					reject(1)
+				},2000)
+			})
+		}
+		
+		//await 1.可以在后面加上Promise对象的函数，且直接拿到resolve的值
+		//		2.await会等待后面的Promise对象执行结束，且拿到resolve的值
+		async function test2(){
+			try{
+				var a = await test()
+			}catch(e){ // 处理reject事件
+				console.log('异常',e)
+			}
+			
+			console.log(a)
+			// throw '执行异常'
+		}
+		
+		test2()
+		
+		// sum(1,2).then(function(res){
+		// 	console.log(res)
+		// },function(errmsg){
+		// 	console.log(errmsg)
+		// })
+		// console.log('sum end')
+		// console.log(test)
+		//test()是在执行逻辑，then()是处理结果
+		// test().then(function(res){
+		// 	console.log('ok',res)
+		// },function(errmsg){
+		// 	console.log('error',errmsg)
+		// })
+		// function test(){
+		// 	return new Promise(function(resolve,reject){
+		// 		reject('失败')
+		// 	})
+		// }
+		
+		// let test = new Promise(function(resolve,reject){
+		// 	resolve('成功')
+		// })
+		
+		// test.then(function(res){
+		// 	console.log('ok',res)
+		// },function(errmsg){
+		// 	console.log('error',errmsg)
+		// })
+		</script>
+	</body>
+</html>

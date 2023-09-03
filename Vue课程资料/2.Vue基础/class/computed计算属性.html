@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  单价：{{priceTen}}<br>
+		  数量：{{num}}<br>
+		  总价：{{allPrice}}<br>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    price:5,
+			num:20
+		  },
+		  computed:{
+			  allPrice(){
+				  return this.price * this.num
+			  },
+			  priceTen(){
+				  return this.price * 10
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

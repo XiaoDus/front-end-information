@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		let articleList = [
+			{id:'001',author:'张三'},
+			{id:'002',author:'赵六'},
+			{id:'003',author:'李四'},
+			{id:'004',author:'李明'},
+			{id:'005',author:'麻子'},
+			{id:'006',author:'张飞'},
+		]
+		
+		let a = articleList.filter(function(item){
+			return item.author == '张三'
+		})
+		// a = [{id:'001',author:'张三'}]
+		// a[0].author
+		
+		let b = articleList.find(function(item){
+			return item.author == '张三'
+		})
+		// b = {id:'001',author:'张三'}
+		// b.author
+		console.log(a)
+		console.log(b)
+		</script>
+	</body>
+</html>

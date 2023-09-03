@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- var : 用于变量声明，虽然有变量提升，但调用前未赋值所以显示undefine -->
+		<!-- let : 类似var，没有变量提升，所以会报错，但同一个变量在同一作用域里不能重复声明,仅在当前代码块有效 -->
+		<!-- const : 用于常量声明，值不允许被改变，仅在当前代码块有效-->
+		
+		<script>
+		// 变量提升
+		// console.log(bl)
+		// var bl = '张三'
+		// ||
+		var bl;
+		console.log(bl);
+		bl = '张三'
+		
+		let a = 10;
+		
+		{
+			let a = 1;
+			var b = 2;
+			const c = 3;
+		}
+		// let a = 1
+		
+		const c = 4
+		
+		// c = c + 100
+		
+		console.log(a)
+		console.log(b)
+		console.log(c)
+		
+		
+		</script>
+		
+	</body>
+</html>

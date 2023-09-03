@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ES6的声明</title>
+	</head>
+	<body>
+		<script>
+		//let和var 的区别：
+		// 1.var有变量提升 let不存在变量提升 
+		// 2.let只能在当前作用域下被声明一次,var可以多次声明
+		// 3.let只在当前作用域生效，var全局有效
+		// const特点：const声明的值不能被修改，否则报错
+		
+		// console.log(a)
+		// var a = 'aaaa'
+		// // ||
+		
+		// var a;
+		// console.log(a)
+		// a = 'aaaa'
+		
+		// let const
+		// let age = 20
+		
+		// {
+		// 	var name = '王五'
+		// 	let age = 20
+		// 	// let age = 30
+		// 	console.log(name,age)
+		// }
+		// let age = 30
+		// console.log(name,age)
+		
+		
+		// const PI = 3.1415926
+		// PI = PI + 1
+		// console.log(PI)
+		
+		function sum(n1,n2){
+			console.log(n1+n2)
+		}
+		
+		//箭头函数 ： 格式 
+		// 变量名=(参数1,参数2,....)=>{执行表达式}
+		sum = (n1,n2)=>{
+			console.log(n1+n2)
+		}
+		
+		// function getUsername(id){
+		// 	if(id == 0){
+		// 		return "管理员";
+		// 	}else{
+		// 		return "普通用户";
+		// 	}
+		// }
+		
+		// getUsername = (id)=>{
+		// 	if(id == 0){
+		// 		return "管理员"
+		// 	}else{
+		// 		return "普通用户"
+		// 	}
+		// }
+		
+		// console.log(getUsername(3))
+		
+		// 解构赋值
+		// let [a,...array] = [1,2,3,4,5,6,7,8]
+		// a=1
+		// array = [2,3,4,5,6,7,8]
+		
+		// Symbol 是原始数据类型，不能new
+		// var test = Symbol('abc')
+		// console.log(test)
+		
+		// Set数据类型
+		// var arr = [1,2,3,4,5,1,2,3,6]
+		// var arr2 = ['a','b','c','a','c']
+		// var test = new Set(arr2);
+		// test.add(6)
+		// console.log(test)
+		
+		// Map数据类型
+		// 可以用任意类型的数据作为其的键（Key）
+		// {
+		// 	'name':'哈哈',
+		// 	'age':20,
+		// 	{name:'张三'},'123321'
+		// }
+		// var test = new Map()
+		// var json = {
+		// 	name:'张三',
+		// 	age:20
+		// }
+		// var a = '1'
+		// var b = '2'
+		// var c = '3'
+		// //test.set(键,值)
+		// //test.get(键)
+		// test.set(json,'123321') //'abc' = '哈哈'
+		// test.set(a,'11111') //'abc' = '哈哈'
+		// test.set(b,'22222') //'abc' = '哈哈'
+		// test.set(c,'33333') //'abc' = '哈哈'
+		
+		// for(var [key,value] of test){
+		// 	console.log(key,value)
+		// }
+		
+		// console.log(test.entries())
+		var test = new Map();
+		test.set('a','1')
+		test.set('b','2')
+		test.set('c','3')
+		console.log(test.entries())
+		</script>
+	</body>
+</html>

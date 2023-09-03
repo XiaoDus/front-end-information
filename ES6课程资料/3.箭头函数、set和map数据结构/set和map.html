@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		// set 成员中的值唯一，不重复
+		const arr = new Set([1, 2, 3, 4, 5, 5, 5, 5]);
+		//传入数组返回不会存在相同成员的数组，
+		console.log(arr); // [1, 2, 3, 4, 5]  set数据结构不会出现相同的成员
+		arr.size; // 5  size方法得到set结构中成员的数量
+						//add(value); //添加某个值，返回Set结构本身。
+						//delete value; //删除某个值，返回一个布尔值，表示删除是否成功。
+						//has(value); //返回一个布尔值，表示该值是否为Set的成员。
+						//clear(); //清除所有成员，没有返回值。
+						//keys(); //返回键名的遍历器
+						//values(); //返回键值的遍历器
+						//entries(); //返回键值对的遍历器
+						//forEach(); //使用回调函数遍历每个成员
+		
+		// map 弥补object只能以字符串作为键的解决方案
+		const m = new Map();
+		const o = { p: "Hello World" };
+		m.set(o, "content"); //以一个对象作为键名
+		m.get(o); // "content"
+		m.has(o); // true
+		m.delete(o); // true
+		m.has(o); // false
+
+		//往map里添加成员
+		const map = new Map([
+		  ["name", "张三"],
+		  ["title", "Author"],
+		]);
+		map.size; // 2
+		map.has("name"); // true
+		map.get("name"); // "张三"
+		map.has("title"); // true
+		map.get("title"); // "Author"
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <img :width="img.w" v-bind:height="img.h" v-bind:src="img.src" />
+			<button @click="changeSrc('https://img1.baidu.com/it/u=282903700,3028230046&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1661878800&t=2d77bdb1fa90cd75080a933b6e6d33ea')">改变图片</button>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		let img = {
+				src:'https://img2.baidu.com/it/u=1404596068,2549809832&fm=253&fmt=auto&app=120&f=JPEG?w=1067&h=800',
+				h:200,
+				w:250
+			}
+		
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    img
+		  },
+		  methods:{
+			  changeSrc(src){
+				  this.img.src = src
+			  }
+		  }
+		})
+		
+		// 有一个a标签，原本的url地址是百度
+		// 通过控制台去修改a标签的url地址，改为B站首页
+		</script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <table border="" cellspacing="" cellpadding="">
+		  	<tr>
+				<td>ID</td>
+				<td>商品名称</td>
+				<td>单价</td>
+				<td>操作</td>
+			</tr>
+			<tr v-for="item in goods" :key="item.id">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.price}}</td>
+				<td><button type="button" @click="addCart(item)">加入购物车</button></td>
+			</tr>
+		  </table>
+		  
+		  <table border="" cellspacing="" cellpadding="">
+		  	<tr>
+				<td>商品名称</td>
+				<td>数量</td>
+				<td>总价</td>
+				<td>操作</td>
+			</tr>
+			<tr v-for="item in cartList" :key="item.id">
+				<td>{{item.name}}</td>
+				<td>{{item.num}}</td>
+				<td>{{item.allPrice}}</td>
+				<td><button type="button" @click="removeCart(item.name)">移出购物车</button></td>
+			</tr>
+		  </table>
+		  总价：￥{{totalPrice}}
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    goods:[
+				{id:'001',name:'苹果',price:2},
+				{id:'002',name:'荔枝',price:15},
+				{id:'003',name:'香蕉',price:5},
+			],
+			cartList:[],
+		  },
+		  methods:{
+			  addCart(good){
+				  let isEx = this.cartList.find(function(item){
+					  return good.name == item.name
+				  })
+				  if(isEx){
+					  this.cartList.find(function(item){
+						if(good.name == item.name){
+							item.num++
+							item.allPrice = item.num*good.price
+						}
+				  })
+				  }else{
+					  let num = 1;
+					  let allPrice = num * good.price
+					  let cart = {
+						  name:good.name,
+						  num:num,
+						  allPrice:allPrice
+					  }
+					  // console.log(good)
+					  // {id:'002',name:'荔枝',price:15}
+					  this.cartList.push(cart)
+				  }
+			  },
+			  removeCart(name){
+				  let idx = this.cartList.findIndex(function(item){
+					  return item.name == name
+				  })
+				  this.cartList.splice(idx,1)
+			  }
+		  },
+		  computed:{
+			  totalPrice(){
+				  let tp = 0
+				  for(let i in this.cartList){
+					  tp = tp + this.cartList[i].allPrice
+				  }
+				  return tp
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}
+			<vc></vc>
+			<vc2></vc2>
+		</div>
+		<script>
+			/**
+			 * 想用组件的三个步骤
+			 * 1.创建组件
+			 * 2.注册组件
+			 * 3.使用组件
+			 */
+			
+			const vc = Vue.extend({
+				template:`
+				<div>
+					<h1>{{word}}</h1>
+					<vc2></vc2>
+				</div>
+				`,
+				data(){
+					return {
+						word:'我是组件！VC'
+					}
+				}
+			})
+			const vc2 = Vue.extend({ //创建组件
+				template:`
+				<div style="width:100px auto;height:100px;border:1px solid red;">
+					<h1>{{word}}</h1>
+				</div>
+				`,
+				data(){
+					return {
+						word:'我是组件2！VC2'
+					}
+				}
+			})
+			Vue.component('vc2',vc2) //全局注册
+			const vm = new Vue({
+				el:"#app",
+				data(){
+					return {
+						msg:'你好组件！'
+					}
+				},
+				components:{ //局部注册
+					vc
+				}
+			})
+		</script>
+	</body>
+</html>

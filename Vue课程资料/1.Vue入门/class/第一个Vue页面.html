@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入JS文件 安装Vue -->
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- View 视图 -->
+		<!-- 定义一个Vue的容器 -->
+		<div id="app">
+			<!-- Hello {{ name }} 年龄是 {{ age }}!
+			{{ tanchuang() }}
+			
+			<a v-bind:href="url">链接</a> -->
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<td>名字</td>
+					<td>{{dog.name}}</td>
+				</tr>
+				<tr>
+					<td>年龄</td>
+					<td>{{dog.age}}</td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td>{{dog.sex}}</td>
+				</tr>
+				<tr>
+					<td>描述</td>
+					<td>{{dog.description}}</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script>
+		
+		Vue.config.productionTip = false
+		// 启动Vue,el里面的内容，就是要接管的容器，css的选择器
+		let vm = new Vue({
+			// element
+			el:'#app',
+			//生命周期钩子
+			mounted(){
+				console.log('挂载完成')
+			},
+			// model 模型 数据
+			data:{
+				name:'麻子',
+				age:30,
+				url:'http://baidu.com',
+				dog:{
+					name:'旺财',
+					age:3,
+					sex:'公',
+					description:'一只很喜欢吃骨头的哈士奇'
+				}
+			},
+			methods:{
+				tanchuang(){
+					// alert('ok')
+				}
+			}
+		})
+		// setTimeout(function(){
+		// 	vm.$mount('#app')
+		// },3000)
+		
+		
+		
+		//数据代理
+		//1. 把data数据全部给了_data
+		//2. 通过数据代理，把_data中的数据，全都给了vm身上
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- v-if  v-else-if  v-else -->
+		<div id="app">
+			<!-- if(isShow == true){
+				<div> 我是v-if为true的时候显示 </div>
+			}else{
+				<div> 我是v-if为false的时候显示 </div>
+			} -->
+			123
+		  <div v-if="isShow"> 我是v-if为true的时候显示</div>
+		  <div v-else> 我是v-if为false的时候显示 </div>
+		  
+		  <div v-if="type==0"> 我是type为0的时候显示</div>
+		  <div v-else-if="type2==1"> 我是type2为1的时候显示</div>
+		  <div v-else-if="type2==2"> 我是type2为2的时候显示</div>
+		  <div v-else> 我是else</div>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    isShow: true,
+			type:0,
+			type2:1
+		  }
+		})
+		</script>
+	</body>
+</html>

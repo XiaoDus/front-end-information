@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+		
+		
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<div id="login" v-show="showLogin">
+							<login></login>
+							<button @click="changeVC" type="button">去注册</button>
+						</div>
+						<div id="reg" v-show="!showLogin">
+							<reg></reg>
+							<button @click="changeVC" type="button">去登录</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		
+		//登录组件
+		const login = Vue.extend({
+			template:`
+			<div>
+			手机：<input type="" name="" id="" value="" /><br>
+			密码：<input type="" name="" id="" value="" /><br>
+			<button class="btn btn-success" type="button">登录</button><br>
+			</div>
+			`,
+			mounted(){
+				console.log(this)
+			}
+		})
+		
+		//注册组件
+		const reg = Vue.extend({
+			template:`
+			<div>
+			手机：<input type="" name="" id="" value="" /><br>
+			密码：<input type="" name="" id="" value="" /><br>
+			手机验证码：<input type="" name="" id="" value="" />
+			<button type="button">获取验证码</button><br>
+			<button type="button">注册</button><br>
+			</div>
+			`,
+			data(){
+				return {
+					age:18
+				}
+			},
+			mounted(){
+				console.log(this)
+			}
+		})
+		
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    showLogin: true
+		  },
+		  components:{
+			  login,
+			  reg
+		  },
+		  methods:{
+			  changeVC(){
+				  this.showLogin = !this.showLogin
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

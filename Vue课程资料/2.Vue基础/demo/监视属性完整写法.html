@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  a:{{a}}<br>
+		  <input type="text" v-model="a" />
+		  <hr>
+		  b:{{b}}<br>
+		  <input type="text" v-model="b" />
+		  <hr>
+		  c:{{c.name}}<br>
+		  <input type="text" v-model="c.name" />
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    a: '1',
+			b: '2',
+			c: {
+				name:'小明',
+				age:18,
+				pet:{
+					dog:'小狗',
+					cat:'小猫'
+				}
+			}
+		  },
+		  watch:{
+			  // 简写形式
+			  a(newValue,oldValue){
+				  console.log('a被更改了')
+			  },
+			  // 完整写法
+			  b:{
+				  immediate:false, //是否立即执行，页面渲染完成时就执行handler
+				  deep:false, // 深度监听
+				  handler(newValue,oldValue){
+					  console.log('b被更改了',newValue,oldValue)
+				  }
+			  },
+			  // c:{
+				 //  immediate:false, //是否立即执行，页面渲染完成时就执行handler
+				 //  deep:true, // 深度监听
+				 //  handler(newValue,oldValue){
+					//   console.log('c被更改了',newValue,oldValue)
+				 //  }
+			  // }
+			  'c.pet':{
+				  immediate:false, //是否立即执行，页面渲染完成时就执行handler
+				  deep:true, // 深度监听
+				  handler(newValue,oldValue){
+					  console.log('c被更改了',newValue,oldValue)
+				  }
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

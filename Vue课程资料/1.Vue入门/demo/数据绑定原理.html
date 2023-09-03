@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.defineProperty</title>
+</head>
+<body>
+	<h1 id="h"></h1>
+   <script type="text/javascript">
+		//渲染模板
+	   function changeHTML(){
+		  let dom = document.getElementById('h')
+		  dom.innerHTML =  vm._data.name
+	   }
+	   let name = '张三'
+        var vm = {
+			   _data:{}
+			}
+	   
+       Object.defineProperty(vm._data,'name', {
+           get: function () {
+               console.log('get被调用');
+               return vm.name
+           },
+           set(v) {
+               console.log('set被调用');
+               vm.name=v;
+			   // 重新渲染模板
+			   changeHTML()
+           }
+       });
+	   Object.defineProperty(vm,'name', {
+	       get: function () {
+	           console.log('get被调用');
+	           return name
+	       },
+	       set(v) {
+	           console.log('set被调用');
+	           name=v;
+	   			   // 重新渲染模板
+	   			   changeHTML()
+	       }
+	   });
+		//初次渲染模板
+		changeHTML()
+       console.log(vm);
+   </script>
+</body>
+</html>

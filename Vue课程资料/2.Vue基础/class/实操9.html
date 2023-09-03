@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <a href="">{{ message | sub}}</a>
+		  <hr>
+		  {{msg | isFaild}}<br>
+		  <input type="text" v-model="msg"/>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    message: '1234567890',
+			msg:'',
+		  },
+		  filters:{
+			  sub(value){
+				  return value.substring(0,5) + '...[查看更多]'
+			  },
+			  isFaild(msg){ //123苹果
+				  var arr = ['苹果','香蕉','梨子']
+				  arr.forEach(function(item){
+					  if(msg.indexOf(item) != -1){
+						  msg = '包含违规词汇'
+					  }
+				  })
+				  return msg
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

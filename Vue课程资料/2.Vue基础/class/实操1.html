@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <img :src="img.src" :width="img.w" :height="img.h"/><hr>
+		  <input type="text" v-model="img.src" />
+		  <input type="checkbox" v-model="show" @change="change"/>显示
+		  <input type="radio" v-model="size" value="150" @click="changeSize('150') "/>大图
+		  <input type="radio" v-model="size" value="50" @click="changeSize('50') "/>小图
+		</div>
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    img:{src:'123',w:'150',h:'150'},
+			size:'150',
+			show:true
+		  },
+		  methods:{
+			  change(){
+				  console.log(this.show)
+				  if(this.show == false){
+					  this.img.h = 0
+					  this.img.w = 0
+				  }else{
+					  this.img.h = this.size
+					  this.img.w = this.size
+				  }
+			  },
+			  changeSize(wh){
+				  this.img.h = wh
+				  this.img.w = wh
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

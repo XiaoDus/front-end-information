@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <a target="_blank" :href="url">{{url_title}}</a>
+		  <button @click="changeA('去哔哩哔哩','http://bilibili.com')" type="button">改变a标签</button>
+		  <button @click="changeA('去淘宝','http://taobao.com')" type="button">改变a标签</button>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data(){
+			  return {
+				  url:'http://baidu.com',
+				  url_title:'去百度'
+			  }
+		  },
+		  methods:{
+			  login(){
+				  console.log('login被执行')
+			  },
+			  changeA(title,url){
+				  let _this = this
+				  setTimeout(function(){
+					  console.log(_this)
+					  _this.url = url
+					  _this.url_title = title
+				  },3000)
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

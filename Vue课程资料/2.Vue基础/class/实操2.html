@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <div class="">
+		  	{{ message_2 }}
+		  </div>
+		  <input type="text" v-model="message" @keyup.enter="message_2 = message"/>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    message: '',
+			message_2:''
+		  }
+		})
+		</script>
+	</body>
+</html>

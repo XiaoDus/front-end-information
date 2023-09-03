@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+		<style>
+		.d1{
+			background-color: red;
+			width: 200px;
+			height: 200px;
+			padding-top:25px;
+		}
+		.d2{
+			margin: 0 auto;
+			background-color: blue;
+			width: 100px;
+			height: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		  <!-- <a href="http://www.baidu.com" @click.prevent="alert1">去百度</a> -->
+		  
+		  <!-- <div class="d1" @click="alert1">
+			  d1
+			  <div class="d2" @click.stop="alert2">
+			  	d2
+			  </div>
+		  </div> -->
+		  
+		  <!-- <button @click.once="alert3" type="button">点一次就不能点了</button> -->
+		  
+		 <!-- <div class="d1" @click.capture="alert1">
+			  d1
+			  <div class="d2" @click="alert2">
+				d2
+			  </div>
+		  </div> -->
+		  
+		  <div class="d1" @click.self="alert1">
+			  d1
+			  <div class="d2" @click.self="alert2">
+				d2
+			  </div>
+		  </div>
+		  
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Hello Vue!'
+		  },
+		  methods:{
+			  alert1(){
+				    console.log('d1被点击')
+			  },
+			  alert2(){
+			  		console.log('d2被点击')
+			  },
+			  alert3(){
+			  		console.log('alert3被点击')
+			  },
+		  }
+		})
+		</script>
+	</body>
+</html>

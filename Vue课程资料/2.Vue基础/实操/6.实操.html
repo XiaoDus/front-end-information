@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+		<style>
+		ul{
+			list-style: none;
+		}
+		ul a{
+			width:80px auto;
+			height:30px;
+			display: block;
+			text-decoration: none;
+			color:black;
+			float: left;
+			margin-left: 10px;
+		}
+		ul a:hover{
+			color:red;
+		}
+		.active{
+			color:blue;
+			border-bottom: 2px solid #005CC5;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		  <ul>
+		  	<a @click="getActive('a1')" :class="isActive.a1?'active':''"><li>首页</li></a>
+		  	<a @click="getActive('a2')" :class="isActive.a2?'active':''"><li>新闻</li></a>
+		  	<a @click="getActive('a3')" :class="isActive.a3?'active':''"><li>个人中心</li></a>
+		  	<a @click="getActive('a4')" :class="isActive.a4?'active':''"><li>关于我们</li></a>
+		  </ul>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    isActive:{
+				a1:true,
+				a2:false,
+				a3:false,
+				a4:false,
+			}
+		  },
+		  methods:{
+			  getActive(id){
+				  for (let key in this.isActive) {
+				   this.isActive[key] = false
+				  }
+				  this.isActive[id] = true
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

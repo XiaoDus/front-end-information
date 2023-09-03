@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			原数据：{{ message }} <br>
+			计算属性：{{ message_upcase }} <br>
+			过滤器：{{ message | upCase }}
+			<hr>
+			{{ name | upCase }}
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Hello Vue!',
+			name:'zhangsan'
+		  },
+		  computed:{
+			  message_upcase(){
+				  return this.message.toUpperCase()
+			  },
+			  name_upcase(){
+				  return this.name.toUpperCase()
+			  }
+		  },
+		  filters:{
+			  upCase(value){
+				  return value.toUpperCase()
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

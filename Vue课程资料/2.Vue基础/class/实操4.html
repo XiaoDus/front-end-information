@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		  单价：<input type="number" v-model="price" /><br>
+		  数量：{{num}}<br>
+		  总价：{{allPrice}}<br>
+		  <button @click="addNum" type="button">增加数量</button>
+		</div>
+		
+		<script>
+		Vue.config.productionTip = false
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    price:15,
+			num:1,
+		  },
+		  methods:{
+			  addNum(){
+				  this.num = this.num + 1
+			  }
+		  },
+		  computed:{
+			  allPrice(){
+				  return this.price * this.num
+			  }
+		  }
+		})
+		</script>
+	</body>
+</html>

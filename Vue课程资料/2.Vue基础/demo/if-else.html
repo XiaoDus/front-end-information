@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue入门</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<div id="app">
+		{{type}}
+		<h1 v-if="type == 0">
+			1.这里为type为0时显示
+		</h1>
+		
+		<h2 v-else-if="type == 1">
+			2.这里为type为1时显示
+		</h2>
+		
+	    <h3 v-else>
+			3.这里为type为除了0和1外的其他数时显示
+		</h3>
+	</div>
+	<script src="./js/vue.js"></script>		<!--引入Vue-->
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data:{
+				type:1,
+			}
+		})
+	</script>
+	</body>
+</html>
